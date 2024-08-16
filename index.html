@@ -1,0 +1,38 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y DOM</title>
+</head>
+<body>
+   <form id="myform">
+    <label for="name">Nombre: </label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="email">Email: </label>
+    <input type="text" id="email" name="email" required>
+    <br>
+    <button type="submit">Enviar</button>
+   </form>
+
+   <h2>Datos del Formulario: </h2>
+   <div id="formDataContainer"></div>
+   
+   <script>
+    function enviar(event) {
+        event.preventDefault();
+
+        let nombre = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        // Crear un nuevo párrafo con los datos
+        let nuevoDato = document.createElement("p");
+        nuevoDato.textContent = "Nombre: " + nombre + ", Email: " + email;
+
+        // Añadir el nuevo párrafo al contenedor
+        document.getElementById("formDataContainer").appendChild(nuevoDato);
+    }
+
+    document.getElementById("myform").addEventListener("submit", enviar);
+   </script>
+</body>
+</html>
